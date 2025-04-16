@@ -16,7 +16,7 @@ pipeline {
         
         stage('Run Tests') {
             steps {
-                sh 'docker run --rm django-jenkins-docker-demo python src/manage.py test'
+                sh 'docker run --rm django-jenkins-docker-demo python manage.py test'
             }
         }
         
