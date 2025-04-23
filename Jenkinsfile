@@ -14,6 +14,13 @@ pipeline {
             }
         }
         
+        stage('Create and Run Migrations') {
+            steps {
+                sh 'docker run --rm django-jenkins-docker-demo python manage.py makemigrations'
+                sh 'docker run --rm django-jenkins-docker-demo python manage.py migrate'
+            }
+        }
+        
         stage('Run Tests') {
             steps {
                 sh 'docker run --rm django-jenkins-docker-demo python manage.py test'
